@@ -8,24 +8,16 @@ boxs = []
 for _ in range(4):
   boxs.append(list(map(int, input().split())))
 
-now = []
+ab = set()
 
-def bruteforce():
-  
-  if sum(now) > k:
-    return
-  
-  if len(now) == 4:
-    if sum(now) == k:
+for a in boxs[0]:
+  for b in boxs[1]:
+    ab.add(a + b)
+
+for c in boxs[2]:
+  for d in boxs[3]:
+    if (k - (c + d)) in ab:
       print("Yes")
       exit(0)
-    return
-      
-  for i in range(n):
-    now.append(boxs[len(now)][i])
-    bruteforce()
-    now.pop()
-
-bruteforce()
 
 print("No")
